@@ -1,0 +1,4 @@
+ansible
+boto
+dnspython
+docker

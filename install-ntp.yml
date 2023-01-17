@@ -1,0 +1,8 @@
+---
+# Run to setup NTP Server/Client
+- hosts: all
+  gather_facts: yes
+  become: true
+  roles:
+    - opsta.ntp
+  environment: "{{ proxy_env | default({}) }}"

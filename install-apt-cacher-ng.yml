@@ -1,0 +1,7 @@
+---
+- hosts: all
+  gather_facts: yes
+  become: true
+  roles:
+    - opsta.apt_cacher_ng
+  environment: "{{ proxy_env | default({}) }}"

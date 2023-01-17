@@ -1,0 +1,20 @@
+---
+- name: Launch OpenStack instance(s)
+  hosts: all
+  connection: local
+  gather_facts: no
+  roles:
+    - opsta.openstack_launch_instances
+  environment: "{{ proxy_env | default({}) }}"
+
+- name: Deploy service
+  hosts: launched_openstack_instances
+  connection: local
+  # NOTE Still need gather_facts = yes because of work around on Docker for Mac
+  # and Xenial work around on Sensu Client
+  gather_facts: yes
+  serial: 1
+  roles:
+    - role: opsta.automated_docker
+      when: automated_docker_name is defined
+  environment: "{{ proxy_env | default({}) }}"

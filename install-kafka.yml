@@ -1,0 +1,8 @@
+---
+- hosts: all
+  gather_facts: yes
+  become: true
+  roles:
+    - opsta.java
+    - opsta.kafka
+  environment: "{{ proxy_env | default({}) }}"

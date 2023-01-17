@@ -1,0 +1,4 @@
+---
+elasticsearch_major_version: 6
+elasticsearch_min_heap_size: 2g
+elasticsearch_max_heap_size: 2g

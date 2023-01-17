@@ -1,0 +1,8 @@
+---
+- hosts: mariadb-master:mariadb-slave
+  gather_facts: true
+  become: true
+  roles:
+    - role: opsta.mariadb
+      mariadb_build_slave: true
+  environment: "{{ proxy_env | default({}) }}"
